@@ -6,7 +6,6 @@ Created on Fri Dec 31 10:58:57 2021
 """
 
 import numpy as np
-import tensorflow as tf
 import cv2
 from tensorflow import keras
 import streamlit as st
