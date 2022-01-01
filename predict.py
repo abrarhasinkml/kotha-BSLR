@@ -21,9 +21,10 @@ def load_image(image):
     return img
 
 def process_image(image):
-    img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    img = np.asarray(image)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     img = cv2.resize(img, (200, 200))
-    img = np.asarray(img)
+    #img = np.asarray(img)
     img = img.reshape(1,200,200,1)
     img = img.astype('float32')
     predict = np.argmax(model.predict(img))
