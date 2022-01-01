@@ -13,7 +13,7 @@ import streamlit as st
 model=keras.models.load_model('model70')
 
 test_image=st.file_uploader("Please upload an image showing a sign language: ")
-st.write(type(test_image))
+test_image=test_image.read()
 #test_image='./Dataset/3_10p3_20170319_135524 32.jpg'
 if test_image is not None:
     img=cv2.imread(test_image, cv2.IMREAD_GRAYSCALE)
