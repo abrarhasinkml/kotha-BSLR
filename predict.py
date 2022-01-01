@@ -17,8 +17,8 @@ test_image=st.file_uploader("Please upload an image showing a sign language: ", 
 
 def process_image(image):
     if image is not None:
-    with open(image.name,'wb') as f:
-        f.write(image.read())
+        with open(image.name,'wb') as f:
+            f.write(image.read())
     img=cv2.imread(f, cv2.IMREAD_GRAYSCALE)
     img=cv2.resize(img, (200, 200))
     img=np.asarray(img)
