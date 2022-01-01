@@ -14,15 +14,18 @@ from PIL import Image
 model=keras.models.load_model('model70')
 
 test_image=st.file_uploader("Please upload an image showing a sign language: ", type=['png','jpeg', 'jpg'])
-test_image=Image.open(test_image)
-#test_image='./Dataset/3_10p3_20170319_135524 32.jpg'
-if test_image is not None:
-    img=cv2.imread(test_image, cv2.IMREAD_GRAYSCALE)
+
+def process_image(image):
+    img=cv2.imread(image, cv2.IMREAD_GRAYSCALE)
     img=cv2.resize(img, (200, 200))
     img=np.asarray(img)
     img=img.reshape(1,200,200,1)
     img=img.astype('float32')
     predict=np.argmax(model.predict(img))
     st.write(predict)
+#test_image='./Dataset/3_10p3_20170319_135524 32.jpg'
+if test_image is not None:
+    test_image=Image.open(test_image)
+    process_image(test_image)
 else:
     st.write('Please reupload the file')
