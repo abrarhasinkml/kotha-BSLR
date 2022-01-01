@@ -14,12 +14,12 @@ from PIL import Image
 model=keras.models.load_model('model70')
 
 test_image=st.file_uploader("Please upload an image showing a sign language: ", type=['png','jpeg', 'jpg'])
-
+if test_image is not None:
+    with open(test_image.name,'wb') as f:
+        f.write(test_image.read())
 
 def process_image(image):
-    file=Image.open(image)
-    file=np.array(file)
-    img=cv2.imread(file, cv2.IMREAD_GRAYSCALE)
+    img=cv2.imread(image, cv2.IMREAD_GRAYSCALE)
     img=cv2.resize(img, (200, 200))
     img=np.asarray(img)
     img=img.reshape(1,200,200,1)
@@ -28,6 +28,6 @@ def process_image(image):
     st.write(predict)
 #test_image='./Dataset/3_10p3_20170319_135524 32.jpg'
 if test_image is not None:
-    process_image(test_image)
+    process_image(f)
 else:
     st.write('Please reupload the file')
