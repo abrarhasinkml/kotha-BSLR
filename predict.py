@@ -20,7 +20,7 @@ if test_image is not None:
 
 def process_image(image):
     img=Image.open(image)
-    img=cv2.imread(img, cv2.IMREAD_GRAYSCALE)
+    img=cv2.imread(img.name, cv2.IMREAD_GRAYSCALE)
     img=cv2.resize(img, (200, 200))
     img=np.asarray(img)
     img=img.reshape(1,200,200,1)
