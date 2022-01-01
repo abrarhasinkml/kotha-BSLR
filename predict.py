@@ -10,7 +10,6 @@ import cv2
 from tensorflow import keras
 import streamlit as st
 from PIL import Image 
-import io
 
 model=keras.models.load_model('model70')
 
