@@ -9,11 +9,12 @@ import numpy as np
 import cv2
 from tensorflow import keras
 import streamlit as st
+from PIL import Image 
 
 model=keras.models.load_model('model70')
 
-test_image=st.file_uploader("Please upload an image showing a sign language: ")
-test_image=test_image.read()
+test_image=st.file_uploader("Please upload an image showing a sign language: ", type=['png','jpeg'])
+test_image=Image.open(test_image)
 #test_image='./Dataset/3_10p3_20170319_135524 32.jpg'
 if test_image is not None:
     img=cv2.imread(test_image, cv2.IMREAD_GRAYSCALE)
