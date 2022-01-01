@@ -21,12 +21,12 @@ def load_image(image):
     return img
 
 def process_image(image):
-    img=cv2.imread(image, cv2.IMREAD_GRAYSCALE)
-    img=cv2.resize(img, (200, 200))
-    img=np.asarray(img)
-    img=img.reshape(1,200,200,1)
-    img=img.astype('float32')
-    predict=np.argmax(model.predict(img))
+    img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    img = cv2.resize(img, (200, 200))
+    img = np.asarray(img)
+    img = img.reshape(1,200,200,1)
+    img = img.astype('float32')
+    predict = np.argmax(model.predict(img))
     st.write(predict)
 #test_image='./Dataset/3_10p3_20170319_135524 32.jpg'
 if test_image is not None:
