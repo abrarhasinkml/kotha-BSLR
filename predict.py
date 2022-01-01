@@ -16,7 +16,9 @@ model=keras.models.load_model('model70')
 test_image=st.file_uploader("Please upload an image showing a sign language: ", type=['png','jpeg', 'jpg'])
 
 def process_image(image):
-    img=cv2.imread(image, cv2.IMREAD_GRAYSCALE)
+    file_bytes = np.asarray(bytearray(image.read()), dtype=np.uint8)
+    opencv_image = cv2.imdecode(file_bytes, 1)
+    img=cv2.imread(opencv_image, cv2.IMREAD_GRAYSCALE)
     img=cv2.resize(img, (200, 200))
     img=np.asarray(img)
     img=img.reshape(1,200,200,1)
