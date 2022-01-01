@@ -15,6 +15,7 @@ model=keras.models.load_model('model70')
 
 test_image=st.file_uploader("Please upload an image showing a sign language: ", type=['png','jpeg', 'jpg'])
 
+
 def process_image(image):
     file=Image.open(image)
     file=np.array(file)
@@ -27,7 +28,6 @@ def process_image(image):
     st.write(predict)
 #test_image='./Dataset/3_10p3_20170319_135524 32.jpg'
 if test_image is not None:
-    test_image=Image.open(test_image)
     process_image(test_image)
 else:
     st.write('Please reupload the file')
