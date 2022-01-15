@@ -80,6 +80,3 @@ print("Test Loss:", score[0])
 print("Test accuracy", score[1])
 
 model.save("model70")
-
-
-
